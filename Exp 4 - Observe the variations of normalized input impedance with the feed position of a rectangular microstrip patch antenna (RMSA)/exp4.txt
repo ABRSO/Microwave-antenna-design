@@ -1,0 +1,43 @@
+%variation of normalized input impedance with feed position in inset fed %microstrip patch antenna
+clc
+
+clearall;
+closeall;
+freq = 2.4;%frequency in GHz
+er = 4.4;%dielectric constant of substrate
+h = 0.16;%the Height of FR4 substrate in cm
+
+W=30.0/(2.0*freq)*sqrt(2.0/(er+1.0))%width of substrate in cm
+ereff=(er+1.0)/2.0+(er-1)/(2.0*sqrt(1.0+12.0*h/W));
+dl=0.412*h*((ereff+0.3)*(W/h+0.264))/((ereff-0.258)*(W/h+0.8));
+lambda_o=30.0/freq;
+lambda=30.0/(freq*sqrt(ereff));
+
+Leff=30.0/(2.0*freq*sqrt(ereff));
+L=Leff-2.0*dl;
+
+ko=2.0*pi/lambda_o;
+th=0:1:180; t=th.*pi/180;
+ARG=cos(t).*(ko*W/2);
+
+res1=sum(sinc(ARG./pi).^2.*sin(t).^2.*sin(t).*((pi/180)*(ko*W/2)^2)); res12=sum(sinc(ARG./pi).^2.*sin(t).^2.*besselj(0,sin(t).*(ko*L)).*sin(t).*((pi/ 180)*(ko*W/2)^2));
+G1=res1./(120*pi^2); G12=res12./(120*pi^2);
+yo = 0:0.01:L;
+Rin0=(2.*(G1+G12))^-1;
+Riny = Rin0*cos((pi.*yo)./L).^2;
+y = Riny./Rin0;
+x = yo./L;
+plot(x,y);
+
+gridon;
+xlabel('Normalized Length');
+
+ylabel('Normalized Impedance');
+title('Variation of Impedance along the Length of the Patch');
+
+Results
+ϵreff=4.0858
+res1=1.1480
+res12=0.6939
+Rin0=321.5026Ω
+W=3.8036cm
