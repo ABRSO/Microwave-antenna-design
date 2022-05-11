@@ -1,0 +1,41 @@
+%Transmission line parameters(R,L,G & C) and characteristic
+%impedance(Zo)of flexible RG58 coaxial cable. Its characteristic impedance is 50 ohms
+
+clc;
+clear all;
+close all;
+
+f=10^9; %1GHz
+d=0.91*10^-3; %outer diameter of inner conductor
+D=2.95*10^-3; %inner diameter of outer conductor
+sigmaC=64.5*10^6;%conductivity of conductor(Tin plated copper)
+sigmapoly=10^-14;%conductivity of dielectric(polyethylene)
+
+er=2.1;	%relative permitivity of dielectric(polyethylene)
+eo=8.85*(10^-12);	%permitivity of free space
+mu=4*pi*(10^-7);	%permeability of dielectric
+disp('capacitance in F/m')
+C=(2*pi*eo*er)/log(D/d)
+
+disp('inductance in H/m')
+L=(mu*log(D/d)/(2*pi))
+disp('skin depth')
+dlt=1/(sqrt(pi*f*mu*sigmaC))
+disp('resistance in ohm/m')
+
+R=(1/(2*pi*dlt*sigmaC))*((1/d)+(1/D))
+disp('conductance in S/m')
+G=(2*pi*sigmapoly)/log(D/d)
+disp('characteristic impedance of coaxial cable in ohms')
+Z0=sqrt(L/C)
+
+Observations
+C=99pF/m
+L=0.235 microH/m
+Skin depth (small delta)=1.98 micro meter
+R=1.79 ohm/m
+G=5.348*10-14 S/m
+Characteristic impedance (Z0)=48.7 ohm
+
+Result
+The characteristic impedance of RG58C/U cable is50 ohm.
