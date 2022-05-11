@@ -1,0 +1,27 @@
+%design of microstrip feedline
+clc;
+clearall;
+closeall;
+e=2.718281828;
+h=1.6*10^-3;%the height of substrate
+er= 4.4;% the dielctric substrate
+pi=3.141592654;
+z=50;%input impedance in ohm
+A=((z/60)*(sqrt((er+1)/2)))+(((er-1)/(er+1))*(0.23+(0.11/er)))
+B=((377*pi)/(2*z*sqrt(er)))
+x=(8*e^A)/((e^(2*A))-2)
+y=((2/pi)*(B-1-log(2*B-1)+(((er-1)/(2*er))*(log(B-1)+0.39-(0.61/er)))))
+w1=x*h
+w2=y*h
+disp('Width of microstrip feed line in m');
+if(w1/h)<=2
+  disp(w1)
+else
+  disp(w2)
+end
+
+Results 
+Given Z0=50 ohm, h=1.6mm, epsillion r = 4.4
+It is observed that A=1.5299 and B=5.6463
+W/h= 1.9119
+Width of Microstrip feed line is W=1.9119*h =3.1mm.
