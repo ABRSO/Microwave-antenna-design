@@ -2,7 +2,7 @@
 This repository contains the **HFSS** designs and **MATLAB** code for all the microwave and antenna design experiments.
 High-Frequency Structure Simulaton from Ansys Electronics Desktop Student 2021a is used for the simulations.
 
-**The list of experiments available here : ** 
+**The list of experiments available here :** 
   1. Design half wave dipole antenna. 
   2. Calculation of transmission line parameters (R, L, C & G) and characteristic impedance (Zo) of a flexible RG58 coaxial cable operating at a frequency of 1GHz. 
   3. Design a microstrip feedline with characteristic impedance (Zo) 50 ohm and calculate the characteristic impedance (Zo) of microstrip line for the obtained feed          width. 
