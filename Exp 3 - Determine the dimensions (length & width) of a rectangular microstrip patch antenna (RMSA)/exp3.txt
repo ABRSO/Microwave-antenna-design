@@ -1,1 +1,42 @@
+%MATLAB program for determining the Patch dimensions(length & breadth of %patch)as well as substrate dimensions
+clc;
 
+clearall;
+closeall;
+c=3*10^8;%in m/sec
+e=2.718281828;
+f=2.4*10^9;%operating frequency
+
+h=1.6*10^-3;%height of substrate in m
+er= 4.4;% FR4 dielctric substrate
+pi=3.141592654;
+disp('Width of patch in m');
+W=((c/(2*f))*(sqrt(2/(er+1))))
+
+disp('effective dielectric constant');
+e_eff=((er+1)/2)+(((er-1)/2)*((1+((12*h)/W))^-0.5))
+b=W/h;
+a=e_eff;
+lambda=c/(f*sqrt(e_eff));
+
+p=(0.412*h);
+dl=p*(((a+0.3)*(b+0.264))/((a-0.258)*(b+0.8)))
+L_eff=(c/(2*f*sqrt(a)));
+disp('Length of patch in m');
+L=L_eff-(2*dl)
+disp('distance of inset feed in m'); 
+d=(10^-4*((0.001699*er^7)+(0.13761*er^6)-(6.1783*er^5)+(93.187*er^4)-(682.69*er^3)+(2561.9*er^2)-(4043*er)+6697)*(L/2)) 
+disp('gap in m');
+g=((c*(4.65*10^-12)))/(sqrt(2*a)*(f/10^))
+disp('width of substrate in m'); 
+Ws=W+6h
+disp('Length of substrate in m'); 
+Ls=L+6h
+
+Results
+W=0.0380m
+ϵ_eff=4.0858
+=7.3882*10-4
+L=0.0294m
+d=0.0090m
+g=2.0333*10-14
